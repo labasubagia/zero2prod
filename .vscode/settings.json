@@ -3,6 +3,7 @@
         "actix",
         "Clippy",
         "dtolnay",
+        "reqwest",
         "Rustfmt",
         "taiki"
     ]
