@@ -6,7 +6,9 @@
         "dtolnay",
         "reqwest",
         "Rustfmt",
+        "rustls",
         "sqlx",
+        "Swatinem",
         "taiki"
     ]
 }
