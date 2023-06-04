@@ -1,10 +1,12 @@
 {
     "cSpell.words": [
         "actix",
+        "chrono",
         "Clippy",
         "dtolnay",
         "reqwest",
         "Rustfmt",
+        "sqlx",
         "taiki"
     ]
 }
