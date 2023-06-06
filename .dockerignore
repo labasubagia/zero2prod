@@ -1,0 +1,11 @@
+.env
+.dockerignore
+.github/
+.vscode/
+migrations/
+scripts/
+target/
+deploy/
+tests/
+Dockerfile
+spec.yaml
