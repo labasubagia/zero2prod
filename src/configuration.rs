@@ -59,7 +59,6 @@ pub fn get_configurations() -> Result<Settings, config::ConfigError> {
         .unwrap_or_else(|_| "local".into())
         .try_into()
         .expect("Failed to parse APP_ENVIRONMENT");
-
     settings.merge(
         config::File::from(configuration_directory.join(environment.as_str())).required(true),
     )?;
@@ -69,6 +68,7 @@ pub fn get_configurations() -> Result<Settings, config::ConfigError> {
 pub enum Environment {
     Local,
     Production,
+    Docker,
 }
 
 impl Environment {
@@ -76,6 +76,7 @@ impl Environment {
         match self {
             Environment::Local => "local",
             Environment::Production => "production",
+            Environment::Docker => "docker",
         }
     }
 }
@@ -86,6 +87,7 @@ impl TryFrom<String> for Environment {
         match value.to_lowercase().as_str() {
             "local" => Ok(Self::Local),
             "production" => Ok(Self::Production),
+            "docker" => Ok(Self::Docker),
             other => Err(format!(
                 "{} is not supported environment. Use either `local` or `production`.",
                 other
