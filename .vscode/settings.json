@@ -4,6 +4,7 @@
         "chrono",
         "Clippy",
         "dtolnay",
+        "linkify",
         "quickcheck",
         "reqwest",
         "Rustfmt",
