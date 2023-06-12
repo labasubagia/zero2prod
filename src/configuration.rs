@@ -35,6 +35,7 @@ impl EmailClientSettings {
 pub struct ApplicationSettings {
     pub host: String,
     pub port: u16,
+    pub base_url: String,
 }
 
 #[derive(serde::Deserialize, Clone)]
