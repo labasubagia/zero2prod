@@ -69,7 +69,7 @@ pub async fn get_subscriber_id_from_token(
     subscription_token: &str,
 ) -> Result<Option<Uuid>, sqlx::Error> {
     let result = sqlx::query!(
-        r#"SELECT subscriber_id from subscription_tokens WHERE subscription_token = $1"#,
+        r#"SELECT subscriber_id from subscription_tokens WHERE subscription_token = $1 FOR UPDATE"#,
         subscription_token
     )
     .fetch_optional(transaction)
