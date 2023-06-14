@@ -13,5 +13,8 @@
         "Swatinem",
         "taiki",
         "wiremock"
-    ]
+    ],
+    "rust-analyzer.inlayHints.parameterHints.enable": true,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust-analyzer.inlayHints.chainingHints.enable": false
 }
