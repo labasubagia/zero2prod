@@ -12,6 +12,7 @@
         "sqlx",
         "Swatinem",
         "taiki",
+        "thiserror",
         "wiremock"
     ],
     "rust-analyzer.inlayHints.parameterHints.enable": true,

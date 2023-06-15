@@ -2829,6 +2829,7 @@ name = "zero2prod"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+ "anyhow",
  "chrono",
  "config",
  "env_logger 0.10.0",
@@ -2844,6 +2845,7 @@ dependencies = [
  "serde 1.0.164",
  "serde_json",
  "sqlx",
+ "thiserror",
  "tokio",
  "tracing",
  "tracing-actix-web",
