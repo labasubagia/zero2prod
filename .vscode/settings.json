@@ -9,6 +9,7 @@
         "reqwest",
         "Rustfmt",
         "rustls",
+        "splitn",
         "sqlx",
         "Swatinem",
         "taiki",
