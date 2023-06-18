@@ -4,6 +4,7 @@
         "chrono",
         "Clippy",
         "dtolnay",
+        "Hasher",
         "linkify",
         "quickcheck",
         "reqwest",
@@ -18,5 +19,9 @@
     ],
     "rust-analyzer.inlayHints.parameterHints.enable": true,
     "rust-analyzer.inlayHints.typeHints.enable": false,
-    "rust-analyzer.inlayHints.chainingHints.enable": false
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.formatOnSave": true
+    }
 }
