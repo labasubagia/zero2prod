@@ -5,6 +5,8 @@
         "Clippy",
         "dtolnay",
         "Hasher",
+        "hmac",
+        "htmlescape",
         "linkify",
         "quickcheck",
         "reqwest",
@@ -15,6 +17,7 @@
         "Swatinem",
         "taiki",
         "thiserror",
+        "urlencoding",
         "wiremock"
     ],
     "rust-analyzer.inlayHints.parameterHints.enable": true,
