@@ -30,7 +30,7 @@ secrecy = { version = "0.8.0", features = ["serde"] }
 tracing-actix-web = "0.7.5"
 unicode-segmentation = "1.10.1"
 validator = "0.16.0"
-reqwest = { version = "0.11.18", default-features = false, features = ["json", "rustls-tls"] }
+reqwest = { version = "0.11.18", default-features = false, features = ["json", "rustls-tls", "cookies"] }
 rand = { version = "0.8", features=["std_rng"] }
 thiserror = "1"
 anyhow = "1"
