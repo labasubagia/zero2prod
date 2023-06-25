@@ -3,6 +3,7 @@ use actix_web::{
     web, HttpRequest, HttpResponse, ResponseError,
 };
 use anyhow::Context;
+use base64::Engine;
 use reqwest::{header::HeaderValue, StatusCode};
 use secrecy::Secret;
 use sqlx::PgPool;
@@ -108,13 +109,14 @@ fn basic_authentication(headers: &HeaderMap) -> Result<Credentials, anyhow::Erro
         .context("The 'Authorization' header was missing")?
         .to_str()
         .context("The 'Authorization' header was not a valid UTF8 string.")?;
-    let base64encoded_segment = header_value
+    let base64encoded_credentials = header_value
         .strip_prefix("Basic ")
         .context("The authorization scheme was not 'Basic'.")?;
-    let decoded_bytes = base64::decode_config(base64encoded_segment, base64::STANDARD)
-        .context("Failed to base64-decode 'Basic'.")?;
-    let decoded_credentials = String::from_utf8(decoded_bytes)
-        .context("The decoded credential string is not valid UTF8.")?;
+    let decoded_credentials = base64::engine::general_purpose::STANDARD
+        .decode(base64encoded_credentials)
+        .context("Failed to base64-decode 'Basic' credentials.")?;
+    let decoded_credentials = String::from_utf8(decoded_credentials)
+        .context("The decoded credential string is valid UTF8.")?;
 
     let mut credentials = decoded_credentials.splitn(2, ':');
     let username = credentials
