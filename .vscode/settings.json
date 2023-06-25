@@ -8,6 +8,7 @@
         "hmac",
         "htmlescape",
         "linkify",
+        "Orkoo",
         "quickcheck",
         "reqwest",
         "Rustfmt",

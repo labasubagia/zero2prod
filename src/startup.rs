@@ -4,7 +4,7 @@ use crate::{
     email_client::EmailClient,
     routes::{
         admin_dashboard, change_password, change_password_form, confirm, health_check, home,
-        log_out, login, login_form, publish_newsletter, subscribe,
+        log_out, login, login_form, publish_newsletter, publish_newsletter_form, subscribe,
     },
 };
 use actix_session::{storage::RedisSessionStore, SessionMiddleware};
@@ -105,20 +105,21 @@ pub async fn run(
             ))
             .wrap(TracingLogger::default())
             .route("/health_check", web::get().to(health_check))
-            .route("/subscriptions", web::post().to(subscribe))
-            .route("/subscriptions/confirm", web::get().to(confirm))
-            .route("/newsletters", web::post().to(publish_newsletter))
-            .route("/", web::get().to(home))
-            .route("/login", web::get().to(login_form))
-            .route("/login", web::post().to(login))
             .service(
                 web::scope("/admin")
                     .wrap(from_fn(reject_anonymous_users))
                     .route("/dashboard", web::get().to(admin_dashboard))
                     .route("/password", web::get().to(change_password_form))
                     .route("/password", web::post().to(change_password))
-                    .route("/logout", web::post().to(log_out)),
+                    .route("/logout", web::post().to(log_out))
+                    .route("/newsletters", web::get().to(publish_newsletter_form))
+                    .route("/newsletters", web::post().to(publish_newsletter)),
             )
+            .route("/subscriptions", web::post().to(subscribe))
+            .route("/subscriptions/confirm", web::get().to(confirm))
+            .route("/", web::get().to(home))
+            .route("/login", web::get().to(login_form))
+            .route("/login", web::post().to(login))
             .app_data(connection.clone())
             .app_data(email_client.clone())
             .app_data(base_url.clone())

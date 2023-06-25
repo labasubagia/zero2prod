@@ -152,15 +152,15 @@ async fn changing_password_works() {
     let response = app.post_logout().await;
     assert_is_redirect_to(&response, "/login");
 
-    // // redirect
-    // let html_page = app.get_login_html().await;
-    // assert!(html_page.contains("<p><i>You have successfully logged out.</i></p>"));
+    // redirect
+    let html_page = app.get_login_html().await;
+    assert!(html_page.contains("<p><i>You have successfully logged out.</i></p>"));
 
-    // // login with new password
-    // let login_body = serde_json::json!({
-    //     "username": &app.test_user.username,
-    //     "password": &new_password,
-    // });
-    // let response = app.post_login(&login_body).await;
-    // assert_is_redirect_to(&response, "/admin/dashboard");
+    // login with new password
+    let login_body = serde_json::json!({
+        "username": &app.test_user.username,
+        "password": &new_password,
+    });
+    let response = app.post_login(&login_body).await;
+    assert_is_redirect_to(&response, "/admin/dashboard");
 }
